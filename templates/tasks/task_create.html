@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Task</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+</head>
+<body>
+
+    {% include 'partials/navbar.html' %}
+
+    <div class="content">
+        <h1>Create a New Task</h1>
+        
+        <form method="POST" class="task-form">
+            {% csrf_token %}
+            <label>Title:</label>
+            <input type="text" name="title" required><br><br>
+
+            <label>Description:</label><br>
+            <textarea name="description"></textarea><br><br>
+
+            <button type="submit">Create</button>
+        </form>
+
+        <a href="{% url 'task_list' %}">Back to Tasks</a>
+
+    </div>
+</body>
+</html>

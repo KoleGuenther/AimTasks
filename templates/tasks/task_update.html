@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Task</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+</head>
+<body>
+
+    {% include 'partials/navbar.html' %}
+    <div class="content">
+        <h1>Update Task</h1>
+        
+        <form method="POST" class="task-form">
+            {% csrf_token %}
+            <label>Title:</label>
+            <input type="text" name="title" value="{{ task.title }}" required><br><br>
+
+            <label>Description:</label><br>
+            <textarea name="description">{{ task.description }}</textarea><br><br>
+
+            <label>
+                <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %}>
+                Completed
+            </label><br><br>
+
+            <button type="submit">Update</button>
+        </form>
+
+        <a href="{% url 'task_list' %}">Back to Tasks</a>
+    </div>
+</body>
+</html>

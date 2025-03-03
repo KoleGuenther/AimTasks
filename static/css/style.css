@@ -1,0 +1,21 @@
+/* get rid of default margins & paddings */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* sidebar expanded content */
+.content {
+    margin-left: 250px; /* 220px sidebar + some gap */
+    padding: 20px;
+    background-color: #333;
+    min-height: 100vh;
+    color: #fff;
+    transition: margin-left 0.3s;
+  }
+  
+  /* sidebar collapsed content */
+  .content.collapsed {
+    margin-left: 60px; /* 40px sidebar + some gap */
+  }

@@ -1,0 +1,73 @@
+{% load static %}
+<style>
+  /* sidebar */
+  .sidebar {
+    width: 220px; 
+    height: 100vh;
+    background-color: #2c2c2c;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s, padding 0.3s;
+    overflow: hidden;
+  }
+  .sidebar.collapsed {
+    width: 40px; 
+    padding: 10px; 
+  }
+  .sidebar p,
+  .sidebar a {
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  .sidebar.collapsed p,
+  .sidebar.collapsed a .link-text {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .sidebar a {
+    display: block;
+    color: #f0f0f0;
+    text-decoration: none;
+    margin: 15px 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  /* sidebar button */
+  .toggle-btn {
+    background-color: #444;
+    border: none;
+    color: #f0f0f0;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+</style>
+
+<div class="sidebar" id="sidebar">
+  <button class="toggle-btn" id="toggleBtn">☰</button>
+  {% if user.is_authenticated %}
+    <p style="color: #fff; font-weight: bold;">{{ user.username }}</p>
+    <a href="{% url 'home' %}"><span class="link-text">Home</span></a>
+    <a href="{% url 'task_list' %}"><span class="link-text">My Tasks</span></a>
+    <a href="{% url 'logout' %}"><span class="link-text">Logout</span></a>
+  {% else %}
+    <a href="{% url 'home' %}"><span class="link-text">Home</span></a>
+    <a href="{% url 'login' %}"><span class="link-text">Login</span></a>
+    <a href="{% url 'signup' %}"><span class="link-text">Sign Up</span></a>
+  {% endif %}
+</div>
+
+<script>
+  // collapsible sidebar
+  const sidebar = document.getElementById('sidebar');
+  const toggleBtn = document.getElementById('toggleBtn');
+  toggleBtn.addEventListener('click', function() {
+    sidebar.classList.toggle('collapsed');
+    const content = document.querySelector('.content');
+    if (content) {
+      content.classList.toggle('collapsed');
+    }
+  });
+</script>

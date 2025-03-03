@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Tasks</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+</head>
+<body>
+
+    {% include 'partials/navbar.html' %}
+    <div class="content">
+    <h1>Your Tasks</h1>
+    <a href="{% url 'task_create' %}">Create New Task</a>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong> - 
+                {% if task.completed %} (Completed) {% else %} (Pending) {% endif %}
+                <p>{{ task.description }}</p>
+                <a href="{% url 'task_update' task.id %}">Edit</a> |
+                <a href="{% url 'task_delete' task.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+    </div>
+</body>
+</html>
