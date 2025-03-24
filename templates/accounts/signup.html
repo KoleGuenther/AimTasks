@@ -1,21 +1,27 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Sign Up - AimTasks</title>
-    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
-</head>
-<body>
-    {% include 'partials/navbar.html' %}
-    
-    <div class="form-container">
-        <h2>Sign Up</h2>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="{% url 'login' %}">Log in!</a>.</p>
-    </div>
-</body>
+    <head>
+        <title>Sign Up - AimTasks</title>
+            <!-- normal style stuff -->
+            <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+            <!-- page specific style -->
+            <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+        
+            <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        {% include 'partials/navbar.html' %}
+        
+        <div class="form-container">
+            <h2>Sign Up</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="{% url 'login' %}">Log in!</a>.</p>
+        </div>
+    </body>
 </html>

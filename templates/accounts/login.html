@@ -1,22 +1,28 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Login - AimTasks</title>
-    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
-</head>
-<body>
-    {% include 'partials/navbar.html' %}
-    
-    <div class="form-container">
-        <h2>Log In</h2>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Log In</button>
-        </form>
-        <p>Don't have an account? <a href="{% url 'signup' %}">Sign up!</a>.</p>
-    </div>
-</body>
+    <head>
+        <title>Login - AimTasks</title>
+            <!-- normal style stuff -->
+            <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+            <!-- page specific style -->
+            <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
+            <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        {% include 'partials/navbar.html' %}
+        
+        <div class="form-container">
+            <h2>Log In</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Log In</button>
+            </form>
+            <p>Don't have an account? <a href="{% url 'signup' %}">Sign up!</a>.</p>
+        </div>
+    </body>
 </html>
