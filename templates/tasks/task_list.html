@@ -30,16 +30,17 @@
                 <li style="margin-bottom: 20px;">
                     <strong>{{ task.title }}</strong>
                     <p>{{ task.description }}</p>
+                    
                     <a href="{% url 'task_update' task.id %}" class="btn edit-btn">✎ Edit</a>
                     <a href="{% url 'task_delete' task.id %}" class="btn delete-btn">🗑 Delete</a>
                     
                     {% if task.completed %}
                         <span style="color: #4CAF50;">✔ Completed</span>
                     {% else %}
-                        <form method="POST" action="{% url 'task_complete' task.id %}" style="display: inline;">
+                        <form method="POST" action="{% url 'task_complete' task.id %}" class="inline-form">
                             {% csrf_token %}
                             <button type="submit" class="btn complete-btn">✔ Mark Complete</button>
-                        </form>
+                        </form>                    
                     {% endif %}
                 </li>
                 <br>
