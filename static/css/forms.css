@@ -76,3 +76,19 @@ html, body {
 .content a:hover {
     text-decoration: underline;
 }
+
+/* checkbox css */
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+    color: #f0f0f0;
+    font-size: 14px;
+}
+
+.checkbox-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #4CAF50;
+}

@@ -15,10 +15,12 @@ def task_create(request):
     if request.method == 'POST':
         title = request.POST.get('title')
         description = request.POST.get('description')
+        is_daily = request.POST.get('is_daily') == 'on'
         Task.objects.create(
             user=request.user,
             title=title,
-            description=description
+            description=description,
+            is_daily=is_daily,
         )
         messages.success(request, "Task created successfully!")  # this is how to use the flash message
         return redirect('task_list')
@@ -31,6 +33,7 @@ def task_update(request, task_id):
         task.title = request.POST.get('title')
         task.description = request.POST.get('description')
         task.completed = 'completed' in request.POST
+        task.is_daily = request.POST.get('is_daily') == 'on'
         task.save()
         messages.success(request, "Task updated successfully!")
         return redirect('task_list')

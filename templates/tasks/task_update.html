@@ -22,12 +22,19 @@
                 <input type="text" name="title" value="{{ task.title }}" required><br><br>
 
                 <label>Description:</label><br>
-                <textarea name="description">{{ task.description }}</textarea><br><br>
+                <textarea name="description" rows="8">{{ task.description }}</textarea><br><br>
 
-                <label>
-                    <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %}>
-                    Completed
-                </label><br><br>
+                <div class="checkbox-row">
+                    <input type="checkbox" id="completed" name="completed" {% if task.completed %}checked{% endif %}>
+                    <label for="completed">Mark as Completed</label>
+                </div>
+                
+                <div class="checkbox-row">
+                    <input type="checkbox" id="is_daily" name="is_daily" {% if task.is_daily %}checked{% endif %}>
+                    <label for="is_daily">Daily Task?</label>
+                </div>
+                
+                
 
                 <button type="submit">Update</button>
             </form>
