@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Task
+from django.utils import timezone
+from datetime import date
 
 @login_required
 def task_list(request):
@@ -47,6 +49,18 @@ def task_delete(request, task_id):
 def complete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
     task.completed = True
+    task.completed_at = timezone.now()
     task.save()
     messages.success(request, f'"{task.title}" marked as complete!')
     return redirect('task_list')
+
+@login_required
+def daily_tasks(request):
+    today = timezone.now().date()
+    tasks = Task.objects.filter(user=request.user, is_daily=True)
+
+    for task in tasks:
+        tasks.done_today = (
+            task.completed_at and task.completed_at.date() == today
+        )
+    return render(request, 'tasks/daily_tasks.html', {'tasks': tasks})

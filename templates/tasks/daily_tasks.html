@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Daily Tasks</title>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+        <!-- normal style stuff -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        {% include 'partials/navbar.html' %}
+        
+        <div class="content">
+            <h1>🎯 Today's Routine</h1>
+            <p>Focus up! These are your daily warm-up tasks for today:</p>
+
+            <ul>
+                {% for task in tasks %}
+                    <li style="margin-bottom: 20px;">
+                        <strong>{{ task.title }}</strong>
+                        <p>{{ task.description }}</p>
+
+                        {% if task.done_today %}
+                            <span style="color: #4CAF50;">✔ Done today</span>
+                        {% else %}
+                            <form method="POST" action="{% url 'task_complete' task.id %}" class="inline-form">
+                                {% csrf_token %}
+                                <button type="submit" class="btn complete-btn">✔ Mark Complete</button>
+                            </form>
+                        {% endif %}
+                    </li>
+                {% empty %}
+                    <p>No daily tasks yet! Edit your tasks to add some to your routine.</p>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>

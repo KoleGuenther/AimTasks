@@ -50,7 +50,8 @@
   {% if user.is_authenticated %}
     <p style="color: #fff; font-weight: bold;">{{ user.username }}</p>
     <a href="{% url 'home' %}"><span class="link-text">Home</span></a>
-    <a href="{% url 'task_list' %}"><span class="link-text">My Tasks</span></a>
+    <a href="{% url 'daily_tasks' %}"><span class="link-text">Daily Tasks</span></a>
+    <a href="{% url 'task_list' %}"><span class="link-text">All Tasks</span></a>
     <a href="{% url 'logout' %}"><span class="link-text">Logout</span></a>
   {% else %}
     <a href="{% url 'home' %}"><span class="link-text">Home</span></a>
