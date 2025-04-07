@@ -58,12 +58,38 @@ def complete_task(request, task_id):
     return redirect('task_list')
 
 @login_required
+def complete_daily_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    task.completed = True
+    task.completed_at = timezone.now()
+    task.save()
+    messages.success(request, f'"{task.title}" marked as complete!')
+    return redirect('daily_tasks')
+
 def daily_tasks(request):
     today = timezone.now().date()
     tasks = Task.objects.filter(user=request.user, is_daily=True)
 
+    # count completed tasks
+    completed_count = 0
     for task in tasks:
-        tasks.done_today = (
+        task.done_today = (
             task.completed_at and task.completed_at.date() == today
         )
-    return render(request, 'tasks/daily_tasks.html', {'tasks': tasks})
+        if task.done_today:
+            completed_count += 1
+
+    # total daily tasks
+    total_tasks = tasks.count()
+
+    # calculate progress
+    progress_percent = int((completed_count / total_tasks) * 100) if total_tasks > 0 else 0
+    
+    context = {
+        'tasks': tasks,
+        'completed_count': completed_count,
+        'total_tasks': total_tasks,
+        'progress_percent': progress_percent,
+    }
+
+    return render(request, 'tasks/daily_tasks.html', context)

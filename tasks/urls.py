@@ -8,4 +8,6 @@ urlpatterns = [
     path('<int:task_id>/delete/', views.task_delete, name='task_delete'),
     path('complete/<int:task_id>/', views.complete_task, name='task_complete'),
     path('daily/', views.daily_tasks, name='daily_tasks'),
+    path('daily/complete/<int:task_id>/', views.complete_daily_task, name='complete_daily_task'),
+
 ]

@@ -11,9 +11,16 @@
         {% include 'partials/navbar.html' %}
         
         <div class="content">
-            <h1>🎯 Today's Routine</h1>
-            <p>Focus up! These are your daily warm-up tasks for today:</p>
+            <h1>Today's Routine</h1>
+            {% if total_tasks > 0 %}
+            <p>Progress: {{ completed_count }} / {{ total_tasks }} tasks completed</p>
 
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" style="width: {{ progress_percent }}%;"></div>
+              </div>              
+            {% endif %}
+        
+            <p>Focus up! These are your daily warm-up tasks for today:</p>
             <ul>
                 {% for task in tasks %}
                     <li style="margin-bottom: 20px;">
@@ -23,7 +30,7 @@
                         {% if task.done_today %}
                             <span style="color: #4CAF50;">✔ Done today</span>
                         {% else %}
-                            <form method="POST" action="{% url 'task_complete' task.id %}" class="inline-form">
+                            <form method="POST" action="{% url 'complete_daily_task' task.id %}" class="inline-form">
                                 {% csrf_token %}
                                 <button type="submit" class="btn complete-btn">✔ Mark Complete</button>
                             </form>
