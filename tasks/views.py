@@ -42,3 +42,11 @@ def task_delete(request, task_id):
         messages.success(request, "Task deleted!")
         return redirect('task_list')
     return render(request, 'tasks/task_delete.html', {'task': task})
+
+@login_required
+def complete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    task.completed = True
+    task.save()
+    messages.success(request, f'"{task.title}" marked as complete!')
+    return redirect('task_list')

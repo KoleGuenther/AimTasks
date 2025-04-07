@@ -27,14 +27,24 @@
         <a href="{% url 'task_create' %}">Create New Task</a>
         <ul>
             {% for task in tasks %}
-                <li>
-                    <strong>{{ task.title }}</strong> - 
-                    {% if task.completed %} (Completed) {% else %} (Pending) {% endif %}
+                <li style="margin-bottom: 20px;">
+                    <strong>{{ task.title }}</strong>
                     <p>{{ task.description }}</p>
-                    <a href="{% url 'task_update' task.id %}">Edit</a> |
-                    <a href="{% url 'task_delete' task.id %}">Delete</a>
+                    <a href="{% url 'task_update' task.id %}" class="btn edit-btn">✎ Edit</a>
+                    <a href="{% url 'task_delete' task.id %}" class="btn delete-btn">🗑 Delete</a>
+                    
+                    {% if task.completed %}
+                        <span style="color: #4CAF50;">✔ Completed</span>
+                    {% else %}
+                        <form method="POST" action="{% url 'task_complete' task.id %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">
+                                ✔ Mark Complete
+                            </button>
+                        </form>
+                    {% endif %}
                 </li>
-            <br>
+                <br>
             {% endfor %}
         </ul>
         <p><a href="{% url 'logout' %}">Logout</a></p>
