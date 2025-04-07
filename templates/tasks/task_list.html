@@ -38,9 +38,7 @@
                     {% else %}
                         <form method="POST" action="{% url 'task_complete' task.id %}" style="display: inline;">
                             {% csrf_token %}
-                            <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">
-                                ✔ Mark Complete
-                            </button>
+                            <button type="submit" class="btn complete-btn">✔ Mark Complete</button>
                         </form>
                     {% endif %}
                 </li>

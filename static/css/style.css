@@ -51,6 +51,14 @@ html, body {
 .delete-btn:hover {
   background-color: #d32f2f;
 }
+.complete-btn {
+  background-color: #4CAF50;
+}
+
+/* Complete button */
+.complete-btn:hover {
+  background-color: #388E3C;
+}
 
 /* Spacing after buttons */
 li form {
