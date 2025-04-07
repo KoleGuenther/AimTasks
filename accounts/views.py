@@ -28,10 +28,12 @@ def login_view(request):
         if user:
             login(request, user)
             return redirect('home')
+            messages.success(request, "Logged in successfully!")
         else:
             messages.error(request, "Invalid username or password.")
     return render(request, 'accounts/login.html')
 
 def logout_view(request):
     logout(request)
+    messages.success(request, "Logged out successfully!")
     return redirect('login')  # Redirect to login after logging out

@@ -15,6 +15,15 @@
     <body>
         {% include 'partials/navbar.html' %}
       
+        <!-- Flash Messages -->
+        {% if messages %}
+          <div class="message-container">
+            {% for message in messages %}
+              <div class="flash-message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
         <div class="content">
           <div class="home-section">
             <h1>Welcome to AimTasks!</h1>
@@ -44,4 +53,20 @@
           </div>
         </div>
       </body>
+      <script>
+        setTimeout(() => {
+          const message = document.querySelector('.flash-message');
+          const container = document.querySelector('.message-container');
+      
+          if (message) {
+            message.classList.add('fade-out');
+          }
+      
+          setTimeout(() => {
+            if (container) {
+              container.style.display = 'none';
+            }
+          }, 500);
+        }, 2500);
+      </script>
 </html>

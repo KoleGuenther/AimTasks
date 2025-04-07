@@ -1,22 +1,62 @@
 /* get rid of default margins & paddings & font */
 html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Rubik', sans-serif;
+  background-color: #2c2c2c;
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
 }
 
 
 /* sidebar expanded content */
 .content {
-    margin-left: 250px; /* 220px sidebar + some gap */
-    padding: 20px;
-    background-color: #333;
-    min-height: 100vh;
-    color: #fff;
-    transition: margin-left 0.3s;
+  margin-left: 250px; /* 220px sidebar + some gap */
+  padding: 20px;
+  background-color: #333;
+  min-height: 100vh;
+  color: #fff;
+  transition: margin-left 0.3s;
   }
   
   /* sidebar collapsed content */
   .content.collapsed {
     margin-left: 60px; /* 40px sidebar + some gap */
   }
+
+/* Flash Messages Style Stuff */
+.message-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: fit-content;
+  max-width: 80%;
+}
+
+
+.flash-message {
+  background-color: #2c2c2c;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border-left: 6px solid #4CAF50;
+  transition: opacity 0.5s ease;
+}
+
+.flash-message.success {
+  background-color: #4CAF50;
+}
+
+.flash-message.error {
+  background-color: #e53935;
+}
+
+.flash-message.warning {
+  background-color: #ff9800;
+}
+
+.flash-message.fade-out {
+  opacity: 0;
+}
