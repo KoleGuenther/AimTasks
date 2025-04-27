@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <h1>Oops! Page Not Found</h1>
+    <p>The page you are looking for doesn't exist or has been moved.</p>
+    <a href="{% url 'task_list' %}">Back to Home</a>
+</div>
+{% endblock %}

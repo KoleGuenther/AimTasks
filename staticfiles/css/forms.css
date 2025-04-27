@@ -1,0 +1,94 @@
+/* get rid of default margins & paddings */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* sidebar expanded content */
+.content {
+    margin-left: 250px; /* 220px sidebar + 30px gap */
+    padding: 20px;
+    background-color: #333;
+    min-height: 100vh;
+    color: #fff;
+    transition: margin-left 0.3s;
+}
+
+/* sidebar collapsed content */
+.content.collapsed {
+    margin-left: 60px; /* 40px sidebar + 30px gap */
+}
+
+/* task form */
+.task-form {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    color: white;
+}
+
+/* labels */
+.task-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+/* inputs */
+.task-form input,
+.task-form textarea {
+    width: 90%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #444;
+    color: white;
+    resize: vertical; /* Allows textareas to expand */
+}
+
+/* buttons */
+.task-form button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.task-form button:hover {
+    background-color: #666;
+}
+
+/* links */
+.content a {
+    display: inline-block;
+    margin-top: 10px;
+    color: lightblue;
+    text-decoration: none;
+}
+
+.content a:hover {
+    text-decoration: underline;
+}
+
+/* checkbox css */
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+    color: #f0f0f0;
+    font-size: 14px;
+}
+
+.checkbox-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #4CAF50;
+}

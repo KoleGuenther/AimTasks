@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Task
@@ -93,3 +94,7 @@ def daily_tasks(request):
     }
 
     return render(request, 'tasks/daily_tasks.html', context)
+
+# testing the 404 page
+def test_404(request):
+    raise Http404

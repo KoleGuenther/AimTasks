@@ -16,7 +16,7 @@
             <p>Progress: {{ completed_count }} / {{ total_tasks }} tasks completed</p>
 
             <div class="progress-bar-container">
-                <div class="progress-bar-fill" style="width: {{ progress_percent }}%;"></div>
+                <div class="progress-bar-fill" style="width: {{ progress_percent }}%;"></div> <!-- appears as errors but they are django template language -->
               </div>              
             {% endif %}
         

@@ -9,5 +9,6 @@ urlpatterns = [
     path('complete/<int:task_id>/', views.complete_task, name='task_complete'),
     path('daily/', views.daily_tasks, name='daily_tasks'),
     path('daily/complete/<int:task_id>/', views.complete_daily_task, name='complete_daily_task'),
-
+    path('test-404/', views.test_404, name='test_404'),
 ]
+

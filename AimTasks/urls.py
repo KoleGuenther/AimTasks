@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from accounts.views import home
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,3 +26,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')), # accounts app
     path('tasks/', include('tasks.urls')), # tasks app
 ]
+
+handler404 = 'AimTasks.views.custom_404'
+
+if settings.DEBUG is False:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
