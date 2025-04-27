@@ -9,9 +9,9 @@ html, body {
 .content {
     margin-left: 250px; /* 220px sidebar + 30px gap */
     padding: 20px;
-    background-color: #333;
+    background-color: #1f1f1f;
     min-height: 100vh;
-    color: #fff;
+    color: #e0e0e0;
     transition: margin-left 0.3s;
 }
 
@@ -25,9 +25,9 @@ html, body {
     width: 100%;
     max-width: 800px;
     padding: 20px;
-    background-color: #2c2c2c;
-    border-radius: 8px;
-    color: white;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    color: #e0e0e0;
 }
 
 /* labels */
@@ -42,10 +42,10 @@ html, body {
 .task-form textarea {
     width: 90%;
     padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #444;
-    color: white;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #333;
+    color: #e0e0e0;
     resize: vertical; /* Allows textareas to expand */
 }
 
@@ -53,23 +53,23 @@ html, body {
 .task-form button {
     margin-top: 10px;
     padding: 10px;
-    background-color: #555;
+    background-color: #3B82F6;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
 }
 
 .task-form button:hover {
-    background-color: #666;
+    background-color: #2563EB;
 }
 
 /* links */
 .content a {
     display: inline-block;
     margin-top: 10px;
-    color: lightblue;
+    color: #3B82F6;
     text-decoration: none;
 }
 
@@ -83,12 +83,12 @@ html, body {
     align-items: center;
     gap: 10px;
     margin: 12px 0;
-    color: #f0f0f0;
+    color: #e0e0e0;
     font-size: 14px;
 }
 
 .checkbox-row input[type="checkbox"] {
     width: 16px;
     height: 16px;
-    accent-color: #4CAF50;
+    accent-color: #10B981;
 }

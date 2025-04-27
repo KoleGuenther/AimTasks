@@ -11,7 +11,7 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Log user in immediately if signing up
+            # log user in immediately if signing up
             login(request, user)
             return redirect('home')
         else:
@@ -27,8 +27,8 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return redirect('home')
             messages.success(request, "Logged in successfully!")
+            return redirect('home')
         else:
             messages.error(request, "Invalid username or password.")
     return render(request, 'accounts/login.html')
@@ -36,4 +36,4 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, "Logged out successfully!")
-    return redirect('login')  # Redirect to login after logging out
+    return redirect('login')  # redirect to login after logging out

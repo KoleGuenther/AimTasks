@@ -12,7 +12,16 @@
     </head>
     <body>
         {% include 'partials/navbar.html' %}
-        
+
+        <!-- Flash Messages -->
+        {% if messages %}
+          <div class="message-container">
+            {% for message in messages %}
+              <div class="flash-message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
         <div class="form-container">
             <h2>Log In</h2>
             <form method="POST">

@@ -1,6 +1,6 @@
 /* get rid of default margins & paddings & font */
 html, body {
-  background-color: #2c2c2c;
+  background-color: #1f1f1f;
   margin: 0;
   padding: 0;
   font-family: 'Rubik', sans-serif;
@@ -10,23 +10,23 @@ html, body {
 .content {
   margin-left: 250px; /* 220px sidebar + some gap */
   padding: 20px;
-  background-color: #333;
+  background-color: #1f1f1f;
   min-height: 100vh;
-  color: #fff;
+  color: #e0e0e0;
   transition: margin-left 0.3s;
-  }
-  
-  /* sidebar collapsed content */
-  .content.collapsed {
-    margin-left: 60px; /* 40px sidebar + some gap */
-  }
+}
 
-/* Completed/Edit/Delete Button Styles*/
+/* sidebar collapsed content */
+.content.collapsed {
+  margin-left: 60px; /* 40px sidebar + some gap */
+}
+
+/* Completed/Edit/Delete Button Styles */
 .btn {
   display: inline-block;
   padding: 8px 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
   color: white;
@@ -36,7 +36,8 @@ html, body {
   line-height: 1.5;
   transition: background-color 0.2s ease;
 }
-/* fix after pressing complete button*/
+
+/* fix after pressing complete button */
 .btn:where(button) {
   font-family: inherit;
   appearance: none;
@@ -46,27 +47,52 @@ html, body {
 
 /* edit button */
 .edit-btn {
-  background-color: #2196F3;
+  background-color: #3B82F6;
+  color: white;
+  text-decoration: none;
 }
-.edit-btn:hover {
-  background-color: #1976D2;
+
+.edit-btn:hover, .edit-btn:active {
+  background-color: #2563EB;
+  text-decoration: none;
+}
+
+.edit-btn:visited {
+  color: white;
 }
 
 /* delete button */
 .delete-btn {
-  background-color: #f44336;
+  background-color: #EF4444;
+  color: white;
 }
-.delete-btn:hover {
-  background-color: #d32f2f;
+
+.delete-btn:hover, .delete-btn:active {
+  background-color: #DC2626;
+  text-decoration: none;
+}
+
+.delete-btn:visited {
+  color: white;
 }
 
 /* complete button */
 .complete-btn {
-  background-color: #4CAF50;
+  background-color: #10B981;
 }
+
 .complete-btn:hover {
-  background-color: #388E3C;
+  background-color: #059669;
 }
+/* button fix for links */
+
+.edit-btn,
+.edit-btn:visited,
+.delete-btn,
+.delete-btn:visited {
+    color: white;
+    text-decoration: none;
+} /* ok i cant fix it i give up, the underline persists*/
 
 /* spacing between buttons */
 li form {
@@ -85,26 +111,26 @@ li form {
 }
 
 .flash-message {
-  background-color: #2c2c2c;
+  background-color: #2a2a2a;
   padding: 12px 24px;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: bold;
-  color: #fff;
+  color: #e0e0e0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  border-left: 6px solid #4CAF50;
+  border-left: 6px solid #10B981;
   transition: opacity 0.5s ease;
 }
 
 .flash-message.error {
-  background-color: #e53935;
+  background-color: #EF4444;
 }
 
 .flash-message.warning {
-  background-color: #ff9800;
+  background-color: #F59E0B;
 }
 
 .flash-message.success {
-  background-color: #4CAF50;
+  background-color: #10B981;
 }
 
 .flash-message.fade-out {
@@ -113,7 +139,7 @@ li form {
 
 /* daily tasks progress bar */
 .progress-bar-container {
-  background-color: #444;
+  background-color: #333;
   border-radius: 8px;
   overflow: hidden;
   height: 20px;
@@ -124,7 +150,7 @@ li form {
 
 .progress-bar-fill {
   height: 100%;
-  background-color: #4CAF50;
+  background-color: #10B981;
   transition: width 0.4s ease;
 }
 
@@ -142,26 +168,26 @@ li form {
 .error-page h1 {
   font-size: 48px;
   margin-bottom: 20px;
-  color: #333;
+  color: #e0e0e0;
 }
 
 .error-page p {
   font-size: 20px;
   margin-bottom: 30px;
-  color: #666;
+  color: #aaaaaa;
 }
 
 .error-page a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #3B82F6;
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
 .error-page a:hover {
-  background-color: #388E3C;
+  background-color: #2563EB;
 }
